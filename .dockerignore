@@ -2,7 +2,6 @@ node_modules
 npm-debug.log
 yarn-error.log
 .DS_Store
-.env
 .env.local
 .vscode
 .git
@@ -12,3 +11,4 @@ Dockerfile
 README.md
 .yarn
 .yarnrc.yml
+.env

@@ -11,7 +11,7 @@ module.exports = {
   description: 'Memainkan stasiun radio',
   async execute(message, args) {
     try {
-      if (!args[0]) return message.reply(":x: **Anda lupa memasukkan nama atau nomor stasiun radio!** \n **Penggunaan** : ``!radio [nama-atau-urutan-stasiun]`` \n **contoh** : ``!radio Prambors``, ``!radio 1``");
+      if (!args[0]) return message.reply(":x: **Anda lupa memasukkan nama atau nomor stasiun radio!** \n **Penggunaan** : ``r.radio [nama-stasiun]`` \n **contoh** : ``!radio Prambors``");
 
       const memberVoiceChannel = message.member.voice.channel;
       if (!memberVoiceChannel) return message.reply(":x: **Anda harus berada di voice channel untuk menggunakan perintah ini!**");

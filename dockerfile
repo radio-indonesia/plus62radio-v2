@@ -1,14 +1,19 @@
 # Gunakan image Node.js LTS sebagai dasar
-FROM node:18-slim
+FROM node:18.7.0-slim AS base
 
-# Install python3
-RUN apt-get update && apt-get install -y python3 make g++ --fix-missing
+# Install ffmpeg
+RUN apt-get update && \
+    apt-get install -y ffmpeg tini libssl-dev ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
 
-# Setel direktori kerja di dalam kontainer
-WORKDIR /62radio
+# Install dependencies
+FROM base AS dependencies
+
+WORKDIR /usr/app
 
 # Salin berkas package.json dan yarn.lock ke direktori kerja
-COPY package.json yarn.lock ./
+COPY package.json .
+COPY yarn.lock .
 
 # Instal dependensi Node.js dengan Yarn
 RUN yarn install
@@ -16,8 +21,5 @@ RUN yarn install
 # Salin sumber kode aplikasi ke direktori kerja
 COPY . .
 
-# Instal ffmpeg
-RUN apt-get update && apt-get install -y ffmpeg
-
 # Tentukan perintah untuk menjalankan aplikasi Anda
-CMD [ "node", "index.js" ]
+CMD [ "yarn", "start" ]

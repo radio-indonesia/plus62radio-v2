@@ -113,8 +113,4 @@ client.once("ready", () => {
   client.user.setActivity('Coded By: Hesam TooVinS', { type: 'WATCHING' });
   registerSlashCommands();
 });
-
 client.login(token);
-
-
-

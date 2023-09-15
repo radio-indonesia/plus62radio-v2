@@ -17,7 +17,7 @@ module.exports = {
       .setThumbnail("https://cdn.discordapp.com/attachments/1098969636306960465/1152052342636675162/helpmenu.png")
       .setColor('#ffcb1f')
       .addFields(
-        { name: 'ℹ️ Perintah Radio', value: `\`${prefix}radio [nama_stasiun]\` atau \`${prefix}radio [urutan_radio]\` \nUntuk memutar stasiun radio favorit Anda.`, inline: false },
+        { name: 'ℹ️ Perintah Radio', value: `Gunakan \`${prefix}radio [nama_stasiun]\` \nUntuk memutar stasiun radio favorit Anda.`, inline: false },
         { name: '📜 Daftar Stasiun Radio', value: `Gunakan \`${prefix}list\` untuk melihat daftar stasiun radio populer.`, inline: false },
         { name: '🔇 Putuskan Koneksi', value: `Gunakan \`${prefix}dc\` untuk memutuskan koneksi bot dari saluran suara.`, inline: false },
         { name: '🤣 Jokes Bapak-bapak', value: `Gunakan \`${prefix}jokes\` untuk mendapatkan jokes bapak-bapak yang lucu.`, inline: false },

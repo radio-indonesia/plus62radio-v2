@@ -12,7 +12,7 @@ module.exports = {
 
       const radiodembed = new MessageEmbed()
         .setTitle('Daftar Stasiun Radio')
-        .setDescription(`Gunakan \`${prefix}radio [nama_stasiun]\` atau \`${prefix}radio [urutan_radio]\` untuk memainkannya.`)
+        .setDescription(`Gunakan \`${prefix}radio [nama_stasiun]\` untuk memainkannya.`)
         .setColor('#65cb88')
         .setThumbnail('https://cdn.discordapp.com/avatars/1090120136167538748/1d5bced34a4a9d90f7033fbc95264faa.webp?size=1024&width=0&height=256')
         .setFooter({
@@ -33,7 +33,7 @@ module.exports = {
       message.reply({ embeds: [radiodembed] });
     } catch (error) {
       console.error('Error:', error);
-      return message.reply('Terjadi kesalahan saat menguraikan daftar stasiun radio.');
+      return message.reply('Terjadi kesalahan saat menampilkan daftar stasiun radio. Coba lagi ya');
     }
   },
 };

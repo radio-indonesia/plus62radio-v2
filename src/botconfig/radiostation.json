@@ -1,0 +1,127 @@
+{
+  "1": {
+    "name": "Prambors Jakarta",
+    "url": "http://23683.live.streamtheworld.com/PRAMBORS_FM_SC",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152252132959997962/prambors.png"
+  },
+  "2": {
+    "name": "Bens Radio Jakarta",
+    "url": "https://stream-157.zeno.fm/047dgsp3v68uv",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152251952198074579/bens.png"
+  },
+  "3": {
+    "name": "Oz Radio Bandung",
+    "url": "http://45.64.97.211:1031/",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152252132230180945/ozradio.png"
+  },
+  "4": {
+    "name": "Trax 101.4 FM Jakarta",
+    "url": "http://n13.radiojar.com/rrqf78p3bnzuv.mp3?rj-tok=AAABinrsRygAbUShHSLcn-nOQQ&rj-ttl=5",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152252134562205736/trax.png"
+  },
+  "5": {
+    "name": "V Radio Jakarta",
+    "url": "http://202.147.199.100:8000/;stream.nsv",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152252134868398180/vradio.png"
+  },
+  "6": {
+    "name": "FeMale 97.9 FM",
+    "url": "https://stream.cloudmu.id/listen/female_radio/stream",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152251991578378372/female.png"
+  },
+  "7": {
+    "name": "Bass 93.2 FM",
+    "url": "http://live.bassfm.id/;",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152251951879311470/bass.png"
+  },
+  "8": {
+    "name": "Bahana 101.8 FM",
+    "url": "https://stream.cloudmu.id/listen/bahana_fm/radio.mp3",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152251951623438408/bahana.png"
+  },
+  "9": {
+    "name": "Motion Radio Jakarta",
+    "url": "http://cast1.my-control-panel.com/proxy/radioso2/stream",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152252074294259763/motion.png"
+  },
+  "10": {
+    "name": "RDI 97.1 FM",
+    "url": "http://202.147.199.99:8000/;",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152252134226669588/rdi.png"
+  },
+  "11": {
+    "name": "Gajahmada FM",
+    "url": "https://server.radioimeldafm.co.id:8040/gajahmadafm",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152251991855218788/gajahmada.png"
+  },
+  "12": {
+    "name": "Rama 104.7 FM",
+    "url": "http://i.klikhost.com:8330/;stream.nsv",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152252133857579148/rama.png"
+  },
+  "13": {
+    "name": "Radio Kita Cirebon",
+    "url": "https://api.webrad.io/data/streams/57/kita-cirebon",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152252133253591161/radiokita.png"
+  },
+  "14": {
+    "name": "Radio Muslim",
+    "url": "https://streaming.radiomuslim.com/;stream/1%D0%BC",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152252133593321512/radiomuslim.png"
+  },
+  "15": {
+    "name": "Nagaswara 99.7 FM",
+    "url": "http://bogor.nagaswarafm.com:8088/",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152252074571087944/nagaswara.png"
+  },
+  "16": {
+    "name": "Mettaswara 90's",
+    "url": "https://mettaswara.com:8700/d4d",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152252074055180440/mettaswara.png"
+  },
+  "17": {
+    "name": "I RADIO FM",
+    "url": "https://n04.radiojar.com/4ywdgup3bnzuv?rj-ttl=5&rj-tok=AAABinoC3gMA6nARmwjTD0cLkQ",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152252072897556500/iradio.png"
+  },
+  "18": {
+    "name": "Merdeka FM SBY",
+    "url": "http://streaming.merdekafm.com:8020/;stream.nsv",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152252073837084792/merdeka.png"
+  },
+  "19": {
+    "name": "Loker Musik FM",
+    "url": "https://stream.lokermusik.com/listen/lokermusik/lokermusik",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152252073606393876/lokermusikindonesia.png"
+  },
+  "20": {
+    "name": "Kisi 93.4 FM Bogor",
+    "url": "http://live.serverstreaming.net:9340/kisifm",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152252073149218816/kisifm.png"
+  },
+  "21": {
+    "name": "El-Shaddai 91.30 FM",
+    "url": "http://shaddai.onlivestreaming.net:9130/live",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152251991293173890/elsaddai.png"
+  },
+  "22": {
+    "name": "Dengerin Musik FM",
+    "url": "http://stream.denger.in:8888/dmi",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152251952848191609/dengerin.png"
+  },
+  "23": {
+    "name": "Persib 96.4 FM",
+    "url": "http://45.64.97.211:8028/;",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152252132599271554/persib.png"
+  },
+  "24": {
+    "name": "Dahlia FM Bandung",
+    "url": "https://svara-stream.radioddns.net:8443/bandung_dahliafm",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152251952491659354/dahlia.png"
+  },
+  "25": {
+    "name": "Lo-Fi Radio",
+    "url": "https://radiorecord.hostingradio.ru/lofi96.aacp",
+    "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152252073392480316/lofi.png"
+  }
+}

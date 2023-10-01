@@ -17,8 +17,8 @@ module.exports = {
       const jokeEmbed = new MessageEmbed()
         .setTitle('Lelucon of the Day')
         .setImage('attachment://62radio-joke.png')
-        .setColor("GREEN")
-        .setFooter(`Request by ${message.author.tag}`, message.author.displayAvatarURL({ format: 'png', dynamic: true }))
+        .setColor("ffcd00")
+        .setFooter({text: `© 2023 +62 Radio. Made with 💗 inBOGOR.`})
         .setTimestamp();
 
       // Mengirim pesan embed dengan gambar sebagai attachment

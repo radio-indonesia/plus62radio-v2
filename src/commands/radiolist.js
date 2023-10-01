@@ -13,12 +13,9 @@ module.exports = {
       const radiodembed = new MessageEmbed()
         .setTitle('Daftar Stasiun Radio')
         .setDescription(`Gunakan \`${prefix}radio [nama_stasiun]\` untuk memainkannya.`)
-        .setColor('#65cb88')
+        .setColor('#ffcd00')
         .setThumbnail('https://cdn.discordapp.com/avatars/1090120136167538748/1d5bced34a4a9d90f7033fbc95264faa.webp?size=1024&width=0&height=256')
-        .setFooter({
-          text: `Request by ${message.author.username}`,
-          iconURL: message.author.displayAvatarURL({ format: 'png', dynamic: true }),
-        })        
+        .setFooter({text: `© 2023 +62 Radio. Made with 💗 inBOGOR.`})
         .setTimestamp();
 
       const radioEntries = Object.entries(radioData);

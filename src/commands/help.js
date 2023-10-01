@@ -15,7 +15,7 @@ module.exports = {
       .setURL("https://62radio.is-a.fun/")
       .setDescription('**📻 Menu Bantuan**')
       .setThumbnail("https://cdn.discordapp.com/attachments/1098969636306960465/1152052342636675162/helpmenu.png")
-      .setColor('#ffcb1f')
+      .setColor('#ffcd00')
       .addFields(
         { name: 'ℹ️ Perintah Radio', value: `Gunakan \`${prefix}radio [nama_stasiun]\` \nUntuk memutar stasiun radio favorit Anda.`, inline: false },
         { name: '📜 Daftar Stasiun Radio', value: `Gunakan \`${prefix}list\` untuk melihat daftar stasiun radio populer.`, inline: false },
@@ -27,9 +27,8 @@ module.exports = {
         { name: '🔒 Kebijakan Privasi', value: `Gunakan \`${prefix}privacy\` untuk melihat Kebijakan Privasi bot.`, inline: false },
         { name: '📜 Ketentuan Layanan', value: `Gunakan \`${prefix}terms\` untuk melihat Ketentuan Layanan bot.`, inline: false },
       )
-      .setFooter({ text: `Request by ${message.author.tag}`, iconURL: message.author.displayAvatarURL({ format: 'png', dynamic: true }) })
+      .setFooter({text: `© 2023 +62 Radio. Made with 💗 inBOGOR.`})
       .setTimestamp();
-
 
           // Create the buttons
     const websiteButton = new MessageButton()

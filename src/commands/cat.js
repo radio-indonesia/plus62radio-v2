@@ -17,23 +17,17 @@ module.exports = {
 
       // Membuat pesan embed dengan gambar kucing sebagai attachment
       const embed = new MessageEmbed()
-        .setTitle("Pap untuk kamu, semangat 💗")
-        .setImage("attachment://62radio-cat.png")
-        .setColor("GREEN")
-        .setFooter({
-          text: `Request by ${message.author.tag}`,
-          iconURL: message.author.displayAvatarURL({
-            format: "png",
-            dynamic: true
-          })
-        })
-        .setTimestamp();
-
-      // Mengirim pesan embed dengan gambar kucing sebagai attachment
-      const sentMessage = await message.reply({
-        embeds: [embed],
-        files: [new MessageAttachment(catImage, "62radio-cat.png")]
-      });
+      .setTitle("Pap untuk kamu, semangat 💗")
+      .setImage("attachment://62radio-cat.png")
+      .setColor("#ffcd00")
+      .setFooter({text: `© 2023 +62 Radio. Made with 💗 inBOGOR.`})
+      .setTimestamp();
+    
+    // Mengirim pesan embed dengan gambar kucing sebagai attachment
+    const sentMessage = await message.reply({
+      embeds: [embed],
+      files: [new MessageAttachment(catImage, "62radio-cat.png")]
+    });
 
       // Emoji jempol (👍) dan jempol turun (👎)
       const thumbsUpEmoji = "👍";

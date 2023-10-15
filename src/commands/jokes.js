@@ -3,7 +3,7 @@ const axios = require('axios');
 
 module.exports = {
   name: 'jokes',
-  description: 'Menampilkan lelucon dari URL',
+  description: 'Menampilkan lelucon khas bapak2',
   async execute(message) {
     // URL untuk lelucon
     const jokeUrl = 'https://jokesbapak2.reinaldyrafli.com/api/';

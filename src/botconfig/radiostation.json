@@ -123,5 +123,30 @@
     "name": "Lo-Fi Radio",
     "url": "https://radiorecord.hostingradio.ru/lofi96.aacp",
     "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152252073392480316/lofi.png"
+  },
+  "26": {
+    "name": "Sunda Radio",
+    "url": "https://sundaradio.com/live/sundaradio",
+    "logo": "https://cdn.discordapp.com/attachments/1098969636306960465/1163070935906123856/radiosunda.png"
+  },
+  "27": {
+    "name": "Passopati FM",
+    "url": "http://live.citrafmradio.com:9494/stream",
+    "logo": "https://cdn.discordapp.com/attachments/1098969636306960465/1163072062026436738/passopatifm.png"
+  },
+  "28": {
+    "name": "Serumpun FM",
+    "url": "http://a2.siar.us:8020/radio.mp3",
+    "logo": "https://cdn.discordapp.com/attachments/1098969636306960465/1163073958288048148/serumpun.png"
+  },
+  "29": {
+    "name": "Memora Manado",
+    "url": "http://i.klikhost.com:9044/;stream.nsv",
+    "logo": "https://cdn.discordapp.com/attachments/1098969636306960465/1163075155485003816/memora.png"
+  },
+  "30": {
+    "name": "Sky Radio",
+    "url": "http://45.64.97.82:8273/;",
+    "logo": "https://cdn.discordapp.com/attachments/1098969636306960465/1163076392980861039/skyradio.png"
   }
 }

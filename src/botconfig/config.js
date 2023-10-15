@@ -6,5 +6,8 @@ module.exports = {
     ownerId: process.env.OWNERID,
     clientId: process.env.CLIENTID,
     guildId: process.env.GUILDID,
-    webhookURL: process.env.WEBHOOKURL
+    webhookURL: process.env.WEBHOOKURL,
+    mongodbURI: process.env.WEBHOOKURL,
+    topggToken: process.env.TOKEN_TOPGG,
+    port: process.env.PORT
 };

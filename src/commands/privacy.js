@@ -7,7 +7,7 @@ module.exports = {
     const embed = new MessageEmbed()
       .setAuthor({
         name: "+62 Radio 📻",
-        icon_url: "https://cdn.discordapp.com/avatars/1090120136167538748/0cf61e809ab511aa3f2b3216ac7d4afe.webp?size=1024&width=0&height=256",
+        iconURL: "https://cdn.discordapp.com/avatars/1090120136167538748/1d5bced34a4a9d90f7033fbc95264faa.webp",
         url: "https://62radio.is-a.fun"
       })
       .setTitle("Kebijakan Privasi 🔒")

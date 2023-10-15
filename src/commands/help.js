@@ -6,29 +6,46 @@ module.exports = {
   description: 'Menampilkan menu bantuan',
   execute(message) {
     const helpEmbed = new MessageEmbed()
-      .setAuthor({
-        name: "+62 Radio 📻",
-        iconURL: "https://cdn.discordapp.com/avatars/1090120136167538748/0cf61e809ab511aa3f2b3216ac7d4afe.webp?size=1024&width=0&height=256",
-        url: "https://62radio.is-a.fun"
-      })
-      .setTitle('Experience the Diversity of Indonesian Music')
-      .setURL("https://62radio.is-a.fun/")
-      .setDescription('**📻 Menu Bantuan**')
-      .setThumbnail("https://cdn.discordapp.com/attachments/1098969636306960465/1152052342636675162/helpmenu.png")
-      .setColor('#ffcd00')
-      .addFields(
-        { name: 'ℹ️ Perintah Radio', value: `Gunakan \`${prefix}radio [nama_stasiun]\` \nUntuk memutar stasiun radio favorit Anda.`, inline: false },
-        { name: '📜 Daftar Stasiun Radio', value: `Gunakan \`${prefix}list\` untuk melihat daftar stasiun radio populer.`, inline: false },
-        { name: '🔇 Putuskan Koneksi', value: `Gunakan \`${prefix}dc\` untuk memutuskan koneksi bot dari saluran suara.`, inline: false },
-        { name: '🤣 Jokes Bapak-bapak', value: `Gunakan \`${prefix}jokes\` untuk mendapatkan jokes bapak-bapak yang lucu.`, inline: false },
-        { name: '😺 Gambar Kucing', value: `Gunakan \`${prefix}cat\` untuk melihat gambar kucing yang menggemaskan.`, inline: false },
-      )
-      .addFields(
-        { name: '🔒 Kebijakan Privasi', value: `Gunakan \`${prefix}privacy\` untuk melihat Kebijakan Privasi bot.`, inline: false },
-        { name: '📜 Ketentuan Layanan', value: `Gunakan \`${prefix}terms\` untuk melihat Ketentuan Layanan bot.`, inline: false },
-      )
-      .setFooter({text: `© 2023 +62 Radio. Made with 💗 inBOGOR.`})
-      .setTimestamp();
+    .setAuthor({
+      name: "+62 Radio",
+      url: "https://62radio.is-a.fun/",
+      iconURL: "https://cdn.discordapp.com/avatars/1090120136167538748/1d5bced34a4a9d90f7033fbc95264faa.webp",
+    })
+    .setTitle("Experience the Diversity of Indonesian Music")
+    .setURL("https://discord.com/oauth2/authorize?client_id=1090120136167538748&permissions=551940254784&redirect_uri=https%3A%2F%2F62radio.is-a.fun%2Fthankyou&response_type=code&scope=guilds.join%20bot%20applications.commands")
+    .setDescription("**📻 Menu Bantuan**")
+    .addFields(
+      {
+        name: "ℹ️ Perintah Radio",
+        value: `Gunakan \`${prefix}radio [nama_stasiun]\` \nUntuk memutar stasiun radio favorit Anda.`,
+        inline: false
+      },
+      {
+        name: "📜 Daftar Stasiun Radio",
+        value: `Gunakan \`${prefix}list\` untuk melihat daftar stasiun radio.`,
+        inline: false
+      },
+      {
+        name: "🔒 Kebijakan Privasi",
+        value: `Gunakan \`${prefix}privacy\` untuk melihat Kebijakan Privasi bot.`,
+        inline: false
+      },
+      {
+        name: "📜 Ketentuan Layanan",
+        value: `Gunakan \`${prefix}terms\` untuk melihat Ketentuan Layanan bot.`,
+        inline: false
+      },
+      {
+        name: "⚙️Perintah tambahan",
+        value: `\`${prefix}dc\` memutuskan koneksi bot dari saluran suara.\n\`${prefix}jokes\` untuk mendapatkan jokes bapak-bapak yang lucu.\n\`${prefix}cat\` untuk mendapatkan gambar kucing yang menggemaskan.\n\`${prefix}botinfo\` informasi mengenai bot +62 Radio`,
+        inline: false
+      },      
+    )
+    .setColor("#ffcd00")
+    .setFooter({
+      text: "© 2023 +62 Radio. Made with 💗 inBOGOR.",
+    })
+    .setTimestamp();
 
           // Create the buttons
     const websiteButton = new MessageButton()
@@ -36,27 +53,27 @@ module.exports = {
     .setURL('https://62radio.is-a.fun/')
     .setLabel('Website');
 
-  const supportButton = new MessageButton()
+  const inviteButton = new MessageButton()
     .setStyle('LINK')
-    .setURL('https://62radio.is-a.fun/sponsor')
-    .setLabel('Dukung Kami');
+    .setURL('https://discord.com/oauth2/authorize?client_id=1090120136167538748&permissions=551940254784&redirect_uri=https%3A%2F%2F62radio.is-a.fun%2Fthankyou&response_type=code&scope=guilds.join%20bot%20applications.commands')
+    .setLabel('Invite');
 
-  const discordButton = new MessageButton()
+  const supportButton = new MessageButton()
     .setStyle('LINK')
     .setURL('https://discord.gg/WFfjrQxnfH')
     .setLabel('Server Support');
 
-  const authorButton = new MessageButton()
+  const sponsorButton = new MessageButton()
     .setStyle('LINK')
-    .setURL('https://discord.com/users/742457036914294855')
-    .setLabel('Pengembang');
+    .setURL('https://62radio.is-a.fun/sponsor')
+    .setLabel('Sponsor');
 
   // Create an action row to hold the buttons
   const actionRow = new MessageActionRow().addComponents(
     websiteButton,
+    inviteButton,
     supportButton,
-    authorButton,
-    discordButton
+    sponsorButton
   );
 
   message.reply({ embeds: [helpEmbed], components: [actionRow] });

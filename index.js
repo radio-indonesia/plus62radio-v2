@@ -51,7 +51,7 @@ const startBot = async () => {
   }
 
   const commandFiles = await fs.readdir('./src/commands');
-  
+
   for (const file of commandFiles) {
     if (file.endsWith('.js')) {
       const command = require(path.join(__dirname, 'src', 'commands', file));
@@ -61,7 +61,7 @@ const startBot = async () => {
 
   client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}`);
-  
+
     // Daftar aktivitas yang akan digunakan secara bergantian
     const activities = [
       { name: "Radio FM & Fun", type: "LISTENING" },
@@ -69,59 +69,59 @@ const startBot = async () => {
       { name: `prefix ${prefix}`, type: "PLAYING" }
     ];
     let currentActivityIndex = 0;
-  
+
     // Fungsi untuk mengubah aktivitas
     function setNextActivity() {
       const activity = activities[currentActivityIndex];
       client.user.setActivity(activity.name, { type: activity.type });
       currentActivityIndex = (currentActivityIndex + 1) % activities.length;
     }
-  
+
     // Set aktivitas awal
     setNextActivity();
-  
+
     // Mengubah aktivitas setiap 10 detik (sesuaikan sesuai kebutuhan)
     setInterval(setNextActivity, 10000);
-  });  
+  });
 
   // Fungsi untuk mengirim statistik bot ke Top.gg
-// Fungsi untuk mengirim statistik bot ke Top.gg
-const postStats = async (shardId) => {
-  const serverCount = client.guilds.cache.size; // Jumlah server
-  const shardCount = client.options.shardCount; // Jumlah shard
+  // Fungsi untuk mengirim statistik bot ke Top.gg
+  const postStats = async (shardId) => {
+    const serverCount = client.guilds.cache.size; // Jumlah server
+    const shardCount = client.options.shardCount; // Jumlah shard
 
-  const data = {
-    server_count: serverCount,
-    shard_id: shardId, // Menggunakan shardId dari parameter fungsi
-    shard_count: shardCount,
+    const data = {
+      server_count: serverCount,
+      shard_id: shardId, // Menggunakan shardId dari parameter fungsi
+      shard_count: shardCount,
+    };
+
+    try {
+      const response = await fetch(`https://top.gg/api/bots/${client.user.id}/stats`, {
+        method: 'POST',
+        headers: {
+          Authorization: topggToken,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        console.log(`Statistik bot shard ${shardId}, shard count ${shardCount}, server count ${serverCount},  berhasil dikirim ke Top.gg.`);
+      } else {
+        console.error(`Gagal mengirim statistik bot shard ${shardId}, shard count ${shardCount}, server count ${serverCount} ke Top.gg: ${response.statusText}`);
+      }
+    } catch (error) {
+      console.error(`Terjadi kesalahan saat mengirim statistik bot shard ${shardId}, shard count ${shardCount}, server count ${serverCount} ke Top.gg:`, error);
+    }
   };
 
-  try {
-    const response = await fetch(`https://top.gg/api/bots/${client.user.id}/stats`, {
-      method: 'POST',
-      headers: {
-        Authorization: topggToken,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-
-    if (response.ok) {
-      console.log(`Statistik bot shard ${shardId}, shard count ${shardCount}, server count ${serverCount},  berhasil dikirim ke Top.gg.`);
-    } else {
-      console.error(`Gagal mengirim statistik bot shard ${shardId}, shard count ${shardCount}, server count ${serverCount} ke Top.gg: ${response.statusText}`);
+  // Kirim statistik ke Top.gg saat bot siap
+  client.once("ready", async () => {
+    for (let shardId = 0; shardId < client.options.shardCount; shardId++) {
+      await postStats(shardId); // Menunggu pengiriman statistik selesai sebelum melanjutkan ke shard berikutnya
     }
-  } catch (error) {
-    console.error(`Terjadi kesalahan saat mengirim statistik bot shard ${shardId}, shard count ${shardCount}, server count ${serverCount} ke Top.gg:`, error);
-  }
-};
-
-// Kirim statistik ke Top.gg saat bot siap
-client.once("ready", async () => {
-  for (let shardId = 0; shardId < client.options.shardCount; shardId++) {
-    await postStats(shardId); // Menunggu pengiriman statistik selesai sebelum melanjutkan ke shard berikutnya
-  }
-});
+  });
 
   client.on("guildCreate", async (guild) => {
     console.log(`Bot diundang ke server: ${guild.name} (ID: ${guild.id})`);
@@ -173,11 +173,10 @@ client.once("ready", async () => {
   });
 
   client.login(token).then(() => {
-    console.log(`Bot is listening on port ${port}`);
     app.get('/', (req, res) => {
       res.send('Bot is up and running!');
     });
-    
+
     const stopServer = () => {
       console.log('Bot is stopping, closing server...');
       app.close(() => {
@@ -194,8 +193,12 @@ client.once("ready", async () => {
       console.error('Bot encountered an error:', error);
       stopServer();
     });
+
+    app.listen(port, () => {
+      console.log(`Bot is listening on port ${port}`);
+    });
   });
-};
+}
 
 startBot();
 

@@ -77,7 +77,7 @@ module.exports = {
         .setTitle('Stasiun Radio Sedang Diputar')
         .setImage(radioArray[radioId].logo)
         .setFooter({ text: `Requested By ${message.author.username}`, iconURL: message.author.displayAvatarURL({ format: 'png', dynamic: true }) })
-        .setColor('#3498db')
+        .setColor('#ffcd00')
         .setTimestamp();
       
       message.channel.send({ embeds: [embed] });

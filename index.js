@@ -61,23 +61,28 @@ const startBot = async () => {
 
   client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}`);
-    
+  
     // Daftar aktivitas yang akan digunakan secara bergantian
-    const activities = ["Radio FM & Fun", `prefix ${prefix}`];
+    const activities = [
+      { name: "Radio FM & Fun", type: "LISTENING" },
+      { name: "Indonesia 💖", type: "WATCHING" },
+      { name: `prefix ${prefix}`, type: "PLAYING" }
+    ];
     let currentActivityIndex = 0;
-
+  
     // Fungsi untuk mengubah aktivitas
     function setNextActivity() {
-      client.user.setActivity(activities[currentActivityIndex], { type: 'LISTENING' });
+      const activity = activities[currentActivityIndex];
+      client.user.setActivity(activity.name, { type: activity.type });
       currentActivityIndex = (currentActivityIndex + 1) % activities.length;
     }
-
+  
     // Set aktivitas awal
     setNextActivity();
-
+  
     // Mengubah aktivitas setiap 10 detik (sesuaikan sesuai kebutuhan)
     setInterval(setNextActivity, 10000);
-  });
+  });  
 
   // Fungsi untuk mengirim statistik bot ke Top.gg
 // Fungsi untuk mengirim statistik bot ke Top.gg

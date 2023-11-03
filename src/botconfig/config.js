@@ -7,7 +7,7 @@ module.exports = {
     clientId: process.env.CLIENTID,
     guildId: process.env.GUILDID,
     webhookURL: process.env.WEBHOOKURL,
-    mongodbURI: process.env.WEBHOOKURL,
+    mongodbURI: process.env.MONGODB_URL,
     topggToken: process.env.TOKEN_TOPGG,
     port: process.env.PORT
 };

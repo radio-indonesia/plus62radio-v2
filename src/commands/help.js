@@ -1,81 +1,156 @@
-const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
+const { MessageActionRow, MessageEmbed, MessageSelectMenu } = require('discord.js');
 const { prefix } = require('../botconfig/config');
+const fs = require('fs').promises;
 
 module.exports = {
   name: 'help',
   description: 'Menampilkan menu bantuan',
-  execute(message) {
+  async execute(message) {
+    const { client } = message;
+
+    // Membaca data radio dari file JSON
+    const contents = await fs.readFile('./src/botconfig/radioid.json', 'utf8');
+    const radioData = JSON.parse(contents).radioid;
+
+    // Membuat pesan embed untuk daftar stasiun radio
+    const radioListEmbed = new MessageEmbed()
+    .setAuthor({
+      name: `${message.guild.members.me.displayName} Radiolist Commands`,
+      iconURL: message.client.user.displayAvatarURL(),
+      url: `https://discord.com/api/oauth2/authorize?client_id=${message.client.user.id}&permissions=8&scope=bot%20applications.commands`,
+    })    
+    .setTitle('<a:62radio:1167680653060485160> Daftar Stasiun Radio <a:62radio:1167680653060485160>')
+    .setURL(`https://discord.com/api/oauth2/authorize?client_id=${message.client.user.id}&permissions=8&scope=bot%20applications.commands`)
+    .setDescription(`Gunakan \`${prefix}radio [nama_stasiun]\` untuk memainkannya.`)
+    .setColor('#ffcd00')
+    .setFooter({
+      text: '© +62 Radio. Made with 💗 in BOGOR.',
+    })    
+    .setTimestamp();
+  
+
+    // Mengatur daftar stasiun radio dalam 2 kolom
+    const radioEntries = Object.entries(radioData);
+    const numColumns = 2;
+
+    for (let i = 0; i < numColumns; i++) {
+      const columnEntries = radioEntries.slice(i * Math.ceil(radioEntries.length / numColumns), (i + 1) * Math.ceil(radioEntries.length / numColumns));
+      const columnText = columnEntries.map(([name, id]) => `:radio: **${id}** - ${name}`).join('\n');
+      radioListEmbed.addFields({ name: `Stasiun Radio ${i + 1}`, value: columnText, inline: true });
+    }
+
+    // Membuat Select Menu
+    const selectMenu = new MessageSelectMenu()
+      .setCustomId('menu')
+      .setPlaceholder('Pilih menu')
+      .addOptions([
+        {
+          label: 'Commands',
+          value: 'commands',
+          description: 'Lihat daftar semua perintah',
+        },
+        {
+          label: 'Radio List',
+          value: 'radiolist',
+          description: 'Lihat daftar stasiun radio populer',
+        },
+        {
+          label: 'Home',
+          value: 'home',
+          description: 'Kembali ke menu awal',
+        },
+      ]);
+
+    // Membuat Action Row untuk Select Menu
+    const actionRow = new MessageActionRow().addComponents(selectMenu);
+
     const helpEmbed = new MessageEmbed()
     .setAuthor({
-      name: "+62 Radio",
-      url: "https://62radio.is-a.fun/",
-      iconURL: "https://cdn.discordapp.com/avatars/1090120136167538748/1d5bced34a4a9d90f7033fbc95264faa.webp",
-    })
-    .setTitle("Experience the Diversity of Indonesian Music")
-    .setURL("https://discord.com/oauth2/authorize?client_id=1090120136167538748&permissions=551940254784&redirect_uri=https%3A%2F%2F62radio.is-a.fun%2Fthankyou&response_type=code&scope=guilds.join%20bot%20applications.commands")
-    .setDescription("**📻 Menu Bantuan**")
-    .addFields(
-      {
-        name: "ℹ️ Perintah Radio",
-        value: `Gunakan \`${prefix}radio [nama_stasiun]\` \nUntuk memutar stasiun radio favorit Anda.`,
-        inline: false
-      },
-      {
-        name: "📜 Daftar Stasiun Radio",
-        value: `Gunakan \`${prefix}list\` untuk melihat daftar stasiun radio.`,
-        inline: false
-      },
-      {
-        name: "🔒 Kebijakan Privasi",
-        value: `Gunakan \`${prefix}privacy\` untuk melihat Kebijakan Privasi bot.`,
-        inline: false
-      },
-      {
-        name: "📜 Ketentuan Layanan",
-        value: `Gunakan \`${prefix}terms\` untuk melihat Ketentuan Layanan bot.`,
-        inline: false
-      },
-      {
-        name: "⚙️Perintah tambahan",
-        value: `\`${prefix}dc\` memutuskan koneksi bot dari saluran suara.\n\`${prefix}jokes\` untuk mendapatkan jokes bapak-bapak yang lucu.\n\`${prefix}cat\` untuk mendapatkan gambar kucing yang menggemaskan.\n\`${prefix}botinfo\` informasi mengenai bot +62 Radio`,
-        inline: false
-      },      
-    )
-    .setColor("#ffcd00")
-    .setFooter({
-      text: "© 2023 +62 Radio. Made with 💗 inBOGOR.",
-    })
-    .setTimestamp();
+      name: `${message.guild.members.me.displayName} Help Commands`,
+      iconURL: message.client.user.displayAvatarURL(),
+      url: `https://discord.com/api/oauth2/authorize?client_id=${message.client.user.id}&permissions=8&scope=bot%20applications.commands`,
+    })  
+      .setTitle('<a:mooinvite:1167716601039159316> Beberapa fitur yang tersedia')
+      .setDescription(
+        '<:blank:1166736168013017128><a:62radio:1167680653060485160> *Radio Populer Indonesia*\n' +
+        '<:blank:1166736168013017128><a:62jokes:1170089114721325229> *Jokes bapak-bapak*\n' +
+        '<:blank:1166736168013017128><:62cat:1170089666863693976> *Gambar kucing menggemaskan*\n\n' +
+        '<a:mewwme_love:1168458069395648522> **Do you want to customize the bot?** [**Subscribe**](https://www.patreon.com/LRMN/membership)'
+      )
+      .setImage('https://cdn.is-a.fun/welgood/62radiomenu.png')
+      .setColor('#ffcd00');
 
-          // Create the buttons
-    const websiteButton = new MessageButton()
-    .setStyle('LINK')
-    .setURL('https://62radio.is-a.fun/')
-    .setLabel('Website');
+    // Kirim pesan dengan Select Menu
+    const sentMessage = await message.channel.send({ embeds: [helpEmbed], components: [actionRow] });
 
-  const inviteButton = new MessageButton()
-    .setStyle('LINK')
-    .setURL('https://discord.com/oauth2/authorize?client_id=1090120136167538748&permissions=551940254784&redirect_uri=https%3A%2F%2F62radio.is-a.fun%2Fthankyou&response_type=code&scope=guilds.join%20bot%20applications.commands')
-    .setLabel('Invite');
+    // Menangani respons dari Select Menu
+    const filter = (interaction) => interaction.customId === 'menu' && interaction.user.id === message.author.id;
 
-  const supportButton = new MessageButton()
-    .setStyle('LINK')
-    .setURL('https://discord.gg/WFfjrQxnfH')
-    .setLabel('Server Support');
+    const collector = sentMessage.createMessageComponentCollector({ filter, time: 30000 });
 
-  const sponsorButton = new MessageButton()
-    .setStyle('LINK')
-    .setURL('https://62radio.is-a.fun/sponsor')
-    .setLabel('Sponsor');
+    collector.on('collect', async (interaction) => {
+      const selectedValue = interaction.values[0];
 
-  // Create an action row to hold the buttons
-  const actionRow = new MessageActionRow().addComponents(
-    websiteButton,
-    inviteButton,
-    supportButton,
-    sponsorButton
-  );
+      if (selectedValue === 'home') {
+        // Tangani pemilihan "Home" di sini
+        // Anda dapat memperbarui atau mengirim ulang pesan bantuan awal
+        sentMessage.edit({ embeds: [helpEmbed], components: [actionRow] });
+      } else if (selectedValue === 'commands') {
+        // Tangani pemilihan "Commands" di sini
+        // Anda dapat mengirim daftar perintah sebagai embed
+        const commandListEmbed = new MessageEmbed()
+        .setAuthor({
+          name: `${message.guild.members.me.displayName} All Commands`,
+          iconURL: message.client.user.displayAvatarURL(),
+          url: `https://discord.com/api/oauth2/authorize?client_id=${message.client.user.id}&permissions=8&scope=bot%20applications.commands`,
+      })
+        .setTitle("Experience the Diversity of Indonesian Music")
+        .setURL("https://62radio.is-a.fun/")
+        .setDescription("**<a:tunesia_prefix:1167678316770238584> Daftar perintah yang tersedia:**")
+        .addFields(
+          {
+            name: "<a:acaaah:1167688811560579123> Perintah Radio",
+            value: `Gunakan \`${prefix}radio [nama_stasiun]\` \nUntuk memutar stasiun radio favorit Anda.`,
+            inline: false
+          },
+          {
+            name: "<a:62radio:1167680653060485160> Daftar Stasiun Radio",
+            value: `Gunakan \`${prefix}list\` untuk melihat daftar stasiun radio.`,
+            inline: false
+          },
+          {
+            name: "<a:tragic5:1169269912989089872> Perintah tambahan",
+            value: `\`${prefix}dc\`, \`${prefix}stats\`, \`${prefix}jokes\`, \`${prefix}cat\`, \`${prefix}about\`, \`${prefix}terms\`, \`${prefix}privacy\`, \`${prefix}help\``,
+            inline: false
+          },      
+        )
+        .setColor("#ffcd00")
+        .setFooter({
+          text: "© 2023 +62 Radio. Made with 💗 inBOGOR.",
+        })
+        .setTimestamp();
 
-  message.reply({ embeds: [helpEmbed], components: [actionRow] });
-}
-};
+        sentMessage.edit({ embeds: [commandListEmbed], components: [actionRow] });
+      } else if (selectedValue === 'radiolist') {
+        // Tangani pemilihan "Radio List" di sini
+        // Anda dapat memproses daftar stasiun radio
+        sentMessage.edit({ embeds: [radioListEmbed], components: [actionRow] });
+      }
+
+      // Hapus respons dari pengguna
+      interaction.deferUpdate();
+    });
+
+    collector.on('end', () => {
+      // Setelah 10 detik, nonaktifkan Select Menu
+      actionRow.components.forEach((component) => {
+        component.setDisabled(true);
+      });
+    
+      sentMessage.edit({ components: [actionRow] });
+    
+      // Kembalikan tampilan ke menu "Home"
+      sentMessage.edit({ embeds: [helpEmbed], components: [actionRow] });
+    });
+  }
+};    

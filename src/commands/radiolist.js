@@ -11,11 +11,18 @@ module.exports = {
       const radioData = JSON.parse(contents).radioid;
 
       const radiodembed = new MessageEmbed()
-        .setTitle('Daftar Stasiun Radio')
+        .setAuthor({
+          name: `${message.guild.members.me.displayName} Radiolist Commands`,
+          iconURL: message.client.user.displayAvatarURL(),
+          url: `https://discord.com/api/oauth2/authorize?client_id=${message.client.user.id}&permissions=8&scope=bot%20applications.commands`,
+        })
+        .setTitle('<a:62radio:1167680653060485160> Daftar Stasiun Radio <a:62radio:1167680653060485160>')
+        .setURL("https://62radio.is-a.fun/")
         .setDescription(`Gunakan \`${prefix}radio [nama_stasiun]\` untuk memainkannya.`)
         .setColor('#ffcd00')
-        .setThumbnail('https://cdn.discordapp.com/avatars/1090120136167538748/1d5bced34a4a9d90f7033fbc95264faa.webp?size=1024&width=0&height=256')
-        .setFooter({text: `© 2023 +62 Radio. Made with 💗 inBOGOR.`})
+        .setFooter({
+          text: '© +62 Radio. Made with 💗 in BOGOR.',
+        })
         .setTimestamp();
 
       const radioEntries = Object.entries(radioData);
@@ -27,10 +34,10 @@ module.exports = {
         radiodembed.addFields({ name: `Stasiun Radio ${i + 1}`, value: columnText, inline: true });
       }
 
-      message.reply({ embeds: [radiodembed] });
+      message.channel.send({ embeds: [radiodembed] });
     } catch (error) {
       console.error('Error:', error);
-      return message.reply('Terjadi kesalahan saat menampilkan daftar stasiun radio. Coba lagi ya');
+      return message.channel.send('Terjadi kesalahan saat menampilkan daftar stasiun radio. Coba lagi ya');
     }
   },
 };

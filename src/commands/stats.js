@@ -4,25 +4,22 @@ const { version } = require('../../package.json');
 const { prefix } = require('../botconfig/config');
 
 module.exports = {
-    name: 'botinfo',
-    description: 'Menampilkan informasi tentang bot',
-    async execute(interaction) {
-        const { client } = interaction;
+    name: 'stats',
+    description: 'Menampilkan informasi statistik bot',
+    async execute(message) {
+        const { client } = message;
 
         // STATS
         const guilds = client.guilds.cache.size;
         const channels = client.channels.cache.size;
         const users = client.guilds.cache.reduce((size, g) => size + g.memberCount, 0);
-        const botInfoEmbed = new MessageEmbed()
-        .setAuthor({
-            name: "+62 Radio 📻",
-            icon_url: "https://cdn.discordapp.com/avatars/1090120136167538748/1d5bced34a4a9d90f7033fbc95264faa.webp",
-            url: "https://62radio.is-a.fun"
-        })
-            .setTitle('Experience the Diversity of Indonesian Music')
-            .setURL("https://62radio.is-a.fun/")
-            .setDescription('**🤖 Bot Information**')
-            .setThumbnail("https://cdn.discordapp.com/attachments/1098969636306960465/1152052342636675162/helpmenu.png")
+        const statsEmbed = new MessageEmbed()
+            .setAuthor({
+                name: `${message.guild.members.me.displayName} Info bot Commands`,
+                iconURL: message.client.user.displayAvatarURL(),
+                url: `https://discord.com/api/oauth2/authorize?client_id=${message.client.user.id}&permissions=8&scope=bot%20applications.commands`,
+            })
+            .setTitle('**🤖 Bot Information**')
             .setColor('#ffcd00')
             .addFields(
                 { name: 'Server Stats', value: `❒ Total guilds: ${guilds}\n❒ Total users: ${users}\n❒ Total channels: ${channels}\n❒ Websocket Ping: ${Math.round(client.ws.ping)} ms`, inline: false },
@@ -39,35 +36,23 @@ module.exports = {
             .setTimestamp();
 
         // Create the buttons
-        const websiteButton = new MessageButton()
+        const inviteButton = new MessageButton()
             .setStyle('LINK')
-            .setURL('https://hop.io/')
-            .setLabel('Hosted by Hop.io');
-
-        const sponsorButton = new MessageButton()
-            .setStyle('LINK')
-            .setURL('https://62radio.is-a.fun/sponsor')
-            .setLabel('Sponsor');
-
-        const authorButton = new MessageButton()
-            .setStyle('LINK')
-            .setURL('https://discord.com/users/742457036914294855')
-            .setLabel('Bot Developer');
+            .setURL(`https://discord.com/api/oauth2/authorize?client_id=${message.client.user.id}&permissions=8&scope=bot%20applications.commands`)
+            .setLabel('Invite');
 
         const supportButton = new MessageButton()
             .setStyle('LINK')
-            .setURL('https://discord.gg/WFfjrQxnfH')
+            .setURL('https://discord.gg/TgUUmQkE3u')
             .setLabel('Server Support');
 
         // Create an action row to hold the buttons
         const actionRow = new MessageActionRow().addComponents(
-            websiteButton,
-            authorButton,
-            sponsorButton,
+            inviteButton,
             supportButton
         );
 
-        interaction.reply({ embeds: [botInfoEmbed], components: [actionRow] });
+        message.channel.send({ embeds: [statsEmbed], components: [actionRow] });
     }
 };
 

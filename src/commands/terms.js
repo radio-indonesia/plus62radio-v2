@@ -4,11 +4,11 @@ module.exports = {
   name: "terms",
   description: "Ketentuan Layanan",
   async execute(message) {
-    const embed = new MessageEmbed() // Menggunakan MessageEmbed, bukan EmbedBuilder
+    const embed = new MessageEmbed()
       .setAuthor({
-        name: "+62 Radio",
-        url: "https://62radio.is-a.fun",
-        iconURL: "https://cdn.discordapp.com/avatars/1090120136167538748/1d5bced34a4a9d90f7033fbc95264faa.webp",
+        name: `${message.guild.members.me.displayName} Terms Commands`,
+        iconURL: message.client.user.displayAvatarURL(),
+        url: `https://discord.com/api/oauth2/authorize?client_id=${message.client.user.id}&permissions=8&scope=bot%20applications.commands`,
       })
       .setTitle("Ketentuan Layanan 📜")
       .setURL("https://62radio.is-a.fun/termsofservice")
@@ -16,9 +16,9 @@ module.exports = {
       .setImage("https://cdn.discordapp.com/attachments/1098969636306960465/1152269977580228700/rradio62.png")
       .setThumbnail("https://cdn.discordapp.com/attachments/1098969636306960465/1152031406453690509/tos62radio.png")
       .setColor("#ffcd00")
-      .setFooter({text: `© 2023 +62 Radio. Made with 💗 inBOGOR.`})
+      .setFooter({ text: `© +62 Radio. Made with 💗 inBOGOR.` })
       .setTimestamp();
 
-    await message.reply({ embeds: [embed] });
+    await message.channel.send({ embeds: [embed] });
   }
 };

@@ -29,6 +29,13 @@ const audioCache = new Map();
 // Koleksi perintah
 client.commands = new Collection();
 
+const GuildSchema = new mongoose.Schema({
+  guildID: String,
+  // Tambahkan bidang lain sesuai kebutuhan
+});
+
+const Guild = mongoose.model("Guild", GuildSchema);
+
 const startBot = async () => {
   try {
     // Kode koneksi MongoDB
@@ -39,12 +46,7 @@ const startBot = async () => {
 
     console.log("MongoDB terhubung!");
 
-    const GuildSchema = new mongoose.Schema({
-      guildID: String,
-      // Tambahkan bidang lain sesuai kebutuhan
-    });
-
-    const Guild = mongoose.model("Guild", GuildSchema);
+    // ...
   } catch (error) {
     console.error("Gagal terhubung ke MongoDB:", error);
     return;
@@ -58,6 +60,27 @@ const startBot = async () => {
       client.commands.set(command.name, command);
     }
   }
+  
+// Mencari koneksi suara yang ada di server saat bot siap
+client.once('ready', () => {
+  client.guilds.cache.forEach(async (guild) => {
+    const connection = voiceConnections.get(guild.id);
+    if (connection) {
+      // Bot terputus dari channel, koneksi ulang jika stasiun radio sedang diputar
+      const currentRadio = radioArray[currentRadioId];
+      if (currentRadio) {
+        const memberVoiceChannel = guild.members.cache.get(client.user.id).voice.channel;
+        
+        if (memberVoiceChannel) {
+          const player = createAudioPlayer();
+          const resource = createAudioResource(currentRadio.url);
+          player.play(resource);
+          connection.subscribe(player);
+        }
+      }
+    }
+  });
+});
 
   client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}`);

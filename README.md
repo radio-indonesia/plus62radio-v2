@@ -43,7 +43,7 @@ Run the robot `node index.js` then using
 <img src="https://media.discordapp.net/attachments/923616646319439882/930731010809802803/unknown.png" />
 
 ***
-# Run On replit
+# Run On replit soon
 
 ***
 ## 🤝 Contributing
@@ -55,7 +55,7 @@ Run the robot `node index.js` then using
 5. Push to the branch: `git push origin my-new-feature`
 6. Submit a pull request
 
-
+```
   },
   "2": {
     "name": "Bens Radio FM Jakarta",
@@ -72,3 +72,4 @@ Run the robot `node index.js` then using
     "url": "http://n13.radiojar.com/rrqf78p3bnzuv.mp3?rj-tok=AAABinrsRygAbUShHSLcn-nOQQ&rj-ttl=5",
     "logo": "https://media.discordapp.net/attachments/1098969636306960465/1152252134562205736/trax.png"
   },
+  ```

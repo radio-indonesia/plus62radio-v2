@@ -43,7 +43,7 @@ module.exports = {
 
         const supportButton = new MessageButton()
             .setStyle('LINK')
-            .setURL('https://discord.gg/TgUUmQkE3u')
+            .setURL('https://discord.gg/2pkvB82NaS')
             .setLabel('Server Support');
 
         // Create an action row to hold the buttons

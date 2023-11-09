@@ -18,8 +18,9 @@ module.exports = {
         })
         .setTitle('<a:62radio:1167680653060485160> Daftar Stasiun Radio <a:62radio:1167680653060485160>')
         .setURL("https://62radio.is-a.fun/")
-        .setDescription(`Gunakan \`${prefix}radio [nama_stasiun]\` untuk memainkannya.`)
+        .setDescription(`Gunakan \`${prefix}radio [nama_stasiun]\` untuk memainkannya.\nContoh: \`${prefix}radio prambors\``)
         .setColor('#ffcd00')
+        .setImage('https://cdn.is-a.fun/62radio/62radio.gif')
         .setFooter({
           text: '© +62 Radio. Made with 💗 in BOGOR.',
         })

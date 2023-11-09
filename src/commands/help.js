@@ -21,8 +21,9 @@ module.exports = {
     })    
     .setTitle('<a:62radio:1167680653060485160> Daftar Stasiun Radio <a:62radio:1167680653060485160>')
     .setURL(`https://discord.com/api/oauth2/authorize?client_id=${message.client.user.id}&permissions=8&scope=bot%20applications.commands`)
-    .setDescription(`Gunakan \`${prefix}radio [nama_stasiun]\` untuk memainkannya.`)
+    .setDescription(`Gunakan \`${prefix}radio [nama_stasiun]\` untuk memainkannya.\nContoh: \`${prefix}radio prambors\``)
     .setColor('#ffcd00')
+    .setImage('https://cdn.is-a.fun/62radio/62radio.gif')
     .setFooter({
       text: '© +62 Radio. Made with 💗 in BOGOR.',
     })    
@@ -77,7 +78,7 @@ module.exports = {
         '<:blank:1166736168013017128><:62cat:1170089666863693976> *Gambar kucing menggemaskan*\n\n' +
         '<a:mewwme_love:1168458069395648522> **Do you want to customize the bot?** [**Subscribe**](https://www.patreon.com/LRMN/membership)'
       )
-      .setImage('https://cdn.is-a.fun/welgood/62radiomenu.png')
+      .setImage('https://cdn.is-a.fun/62radio/62radio.gif')
       .setColor('#ffcd00');
 
     // Kirim pesan dengan Select Menu
@@ -124,6 +125,7 @@ module.exports = {
             inline: false
           },      
         )
+        .setImage("https://cdn.is-a.fun/62radio/62radio.gif")
         .setColor("#ffcd00")
         .setFooter({
           text: "© 2023 +62 Radio. Made with 💗 inBOGOR.",

@@ -1,7 +1,7 @@
 {
   "name": "62radio",
   "version": "4.3.0",
-  "description": " Professional Discordjs Radio Bot",
+  "description": "Stasiun radio terpopuler di indonesia",
   "main": "index.js",
   "engines": {
     "node": "18.x"

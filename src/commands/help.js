@@ -73,9 +73,9 @@ module.exports = {
     })  
       .setTitle('<a:mooinvite:1167716601039159316> Beberapa fitur yang tersedia')
       .setDescription(
-        '<:blank:1166736168013017128><a:62radio:1167680653060485160> *Radio Populer Indonesia*\n' +
-        '<:blank:1166736168013017128><a:62jokes:1170089114721325229> *Jokes bapak-bapak*\n' +
-        '<:blank:1166736168013017128><:62cat:1170089666863693976> *Gambar kucing menggemaskan*\n\n' +
+        '<:blankers:1166697092467662849><a:62radio:1167680653060485160> *Radio Populer Indonesia*\n' +
+        '<:blankers:1166697092467662849><a:62jokes:1170089114721325229> *Jokes bapak-bapak*\n' +
+        '<:blankers:1166697092467662849><:62cat:1170089666863693976> *Gambar kucing menggemaskan*\n\n' +
         '<a:mewwme_love:1168458069395648522> **Do you want to customize the bot?** [**Subscribe**](https://www.patreon.com/LRMN/membership)'
       )
       .setImage('https://cdn.is-a.fun/62radio/62radio.gif')

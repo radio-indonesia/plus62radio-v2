@@ -13,7 +13,7 @@ module.exports = {
             .addFields(
                 {
                     name: "Creator",
-                    value: "[**romanromannya**](https://is-a.fun/)",
+                    value: "[**L RMN**](https://is-a.fun/)",
                     inline: true
                 },
                 {
@@ -39,8 +39,8 @@ module.exports = {
 
         const sponsorButton = new MessageButton()
             .setStyle('LINK')
-            .setURL("https://62radio.is-a.fun/sponsor")
-            .setLabel('Sponsor');
+            .setURL("https://discord.gg/6EXgrmtkPX")
+            .setLabel('Server Support');
 
         // Create an action row to hold the buttons
         const actionRow = new MessageActionRow().addComponents(

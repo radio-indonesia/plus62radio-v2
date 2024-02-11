@@ -1,10 +1,13 @@
 const { MessageActionRow, MessageEmbed, MessageSelectMenu } = require('discord.js');
 const { prefix } = require('../botconfig/config');
+const { aliases } = require('./radio');
 const fs = require('fs').promises;
 
 module.exports = {
   name: 'help',
   description: 'Menampilkan menu bantuan',
+  aliases: 'h',
+  usage: ``,
   async execute(message) {
     const { client } = message;
 
@@ -21,7 +24,7 @@ module.exports = {
     })    
     .setTitle('<a:62radio:1167680653060485160> Daftar Stasiun Radio <a:62radio:1167680653060485160>')
     .setURL(`https://discord.com/api/oauth2/authorize?client_id=${message.client.user.id}&permissions=8&scope=bot%20applications.commands`)
-    .setDescription(`Gunakan \`${prefix}radio [nama_stasiun]\` untuk memainkannya.\nContoh: \`${prefix}radio prambors\``)
+    .setDescription(`Gunakan \`${prefix}play [nama_stasiun]\` untuk memainkannya.\nContoh: \`${prefix}play prambors\``)
     .setColor('#ffcd00')
     .setImage('https://cdn.is-a.fun/62radio/62radio.gif')
     .setFooter({
@@ -71,11 +74,8 @@ module.exports = {
       iconURL: message.client.user.displayAvatarURL(),
       url: `https://discord.com/api/oauth2/authorize?client_id=${message.client.user.id}&permissions=8&scope=bot%20applications.commands`,
     })  
-      .setTitle('<a:mooinvite:1167716601039159316> Beberapa fitur yang tersedia')
+      .setTitle('a simple Discord music bot to play a radio from some Indonesian radio-station!')
       .setDescription(
-        '<:blankers:1166697092467662849><a:62radio:1167680653060485160> *Radio Populer Indonesia*\n' +
-        '<:blankers:1166697092467662849><a:62jokes:1170089114721325229> *Jokes bapak-bapak*\n' +
-        '<:blankers:1166697092467662849><:62cat:1170089666863693976> *Gambar kucing menggemaskan*\n\n' +
         '<a:mewwme_love:1168458069395648522> **Do you want to customize the bot?** [**Subscribe**](https://www.patreon.com/LRMN/membership)'
       )
       .setImage('https://cdn.is-a.fun/62radio/62radio.gif')
@@ -111,7 +111,7 @@ module.exports = {
         .addFields(
           {
             name: "<a:acaaah:1167688811560579123> Perintah Radio",
-            value: `Gunakan \`${prefix}radio [nama_stasiun]\` \nUntuk memutar stasiun radio favorit Anda.`,
+            value: `Gunakan \`${prefix}play [nama_stasiun]\` \nUntuk memutar stasiun radio favorit Anda.`,
             inline: false
           },
           {

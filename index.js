@@ -11,7 +11,7 @@ const express = require('express');
 const app = express();
 
 const client = new Client({
-  shardCount: 5, // Total number of shards
+  shardCount: 1, // Total number of shards
   intents: [
     Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MESSAGES,

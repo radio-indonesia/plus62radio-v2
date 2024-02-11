@@ -36,8 +36,10 @@ const radioArray = Object.values(radio);
 let currentRadioId = -1;
 
 module.exports = {
-  name: 'radio',
+  name: 'play',
   description: 'Memutar stasiun radio',
+  usage: 'play <nama radio>',
+  aliases: ['p'],
   async execute(message, args) {
     try {
       const memberVoiceChannel = message.member.voice.channel;
@@ -61,8 +63,8 @@ module.exports = {
           .setColor('#ffcd00')
           .setDescription(
             '<a:moocancel:1167715748295213066> **Anda lupa memasukkan nama stasiun radio!**\n' +
-            '**Penggunaan** : `r.radio [nama-stasiun]`\n' +
-            '**Contoh** : `r.radio prambors`'
+            '**Penggunaan** : `r.play [nama-stasiun]`\n' +
+            '**Contoh** : `r.play prambors`'
           );
 
         message.channel.send({ embeds: [embed] }).then((reply) => {

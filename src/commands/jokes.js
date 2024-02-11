@@ -4,6 +4,7 @@ const axios = require('axios');
 module.exports = {
   name: 'jokes',
   description: 'Menampilkan lelucon khas bapak2',
+  aliases: ['joke'],
   async execute(message) {
     // URL untuk lelucon
     const jokeUrl = 'https://jokesbapak2.reinaldyrafli.com/api/';

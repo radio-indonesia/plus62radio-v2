@@ -6,6 +6,7 @@ const { prefix } = require('../botconfig/config');
 module.exports = {
     name: 'stats',
     description: 'Menampilkan informasi statistik bot',
+    aliases: ['stat'],
     async execute(message) {
         const { client } = message;
 
@@ -43,7 +44,7 @@ module.exports = {
 
         const supportButton = new MessageButton()
             .setStyle('LINK')
-            .setURL('https://discord.gg/2pkvB82NaS')
+            .setURL('https://discord.gg/6EXgrmtkPX')
             .setLabel('Server Support');
 
         // Create an action row to hold the buttons
